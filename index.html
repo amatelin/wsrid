@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Who said romance is Dead ! A random poetic commentary fetcher from the wonderful porn-watching community</title>
+    <title>Who said romance is Dead ! A random poetic comments fetcher from the wonderful porn-watching community</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -9,16 +9,23 @@
     <div id="content"></div>
 
     <!-- templates -->
-    <script type="text/template" id="fetcher-layout">
-        <div id="fetcher-button"></div>
+    <script type="text/template" id="commentDisplay-layout">
+        <div id="fetcherButton"></div>
+        <div id="commentContainer"></div>
     </script>
 
     <!-- Thirt-Party Libraries (Order matters) -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
     <script src="./assets/javascript/vendor/underscore.js"></script>
     <script src="./assets/javascript/vendor/backbone.js"></script>
     <script src="./assets/javascript/vendor/backbone.marionette.js"></script>
 
     <!-- Application core (Order matters) -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.poetic_app.js"></script>
+    <script type="text/javascript">
+        MyApp.start();
+    </script>
 </body>
 </html>
