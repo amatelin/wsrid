@@ -22,13 +22,11 @@ MyApp.PoeticApp = (function() {
         self: this,
 
         initialize: function(){
-            return new Comment({
-                CommentContent: 'GROS TEST'
-            });
+            return new Comment({});
         },
 
 
-        fetch : function() {
+        fetch : function(callback) {
             $.getJSON(
                 'http://query.yahooapis.com/v1/public/yql?callback=?',
                 {
@@ -38,9 +36,9 @@ MyApp.PoeticApp = (function() {
                 function(data) {
                     var results = data.query.results.a;
                     var length = results.length;
+                    var fetchResults = [];
 
                     for (var i=0; i<length; i++){
-                        //console.log('select * from html where url="'+videoUrl+'" and xpath="//*[@class=\'commentContent\']"');
                         $.getJSON(
                             'http://query.yahooapis.com/v1/public/yql?callback=?',
                             {
@@ -52,12 +50,19 @@ MyApp.PoeticApp = (function() {
                                 var length = results.length;
 
                                 for (var i=0; i<length; i++) {
-                                    console.log(results[i].span.content)
+                                    var comment = new Comment({
+                                        CommentContent: results[i].span.content
+                                    });
+                                    fetchResults.push(comment);
                                 }
 
                             }
                         )
                     }
+
+
+                    callback(searchResults);
+
                 }
             )
         },
@@ -68,7 +73,11 @@ MyApp.PoeticApp = (function() {
     PoeticApp.initializeLayout = function() {
         PoeticApp.layout = new Layout();
 
-        MyApp.PoeticApp.Comment = PoeticApp.Comments.initialize();
+        MyApp.PoeticApp.DefaultComment = PoeticApp.Comments.initialize();
+        MyApp.PoeticApp.Comment = PoeticApp.Comments.fetch(function(searchResults){
+            return searchResults;
+            //MyApp.vent.trigger("fetch:complete")
+        });
 
         PoeticApp.layout.on("show", function(){
            MyApp.vent.trigger("layout:rendered");

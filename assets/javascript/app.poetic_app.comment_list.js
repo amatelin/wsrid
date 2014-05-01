@@ -14,5 +14,10 @@ MyApp.PoeticApp.CommentList = (function() {
 }());
 
 MyApp.vent.on("layout:rendered", function(){
-   MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
+   MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.DefaultComment);
+});
+
+MyApp.vent.on("fetch:complete", function(){
+    MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
+    console.log('yay');
 });
