@@ -15,31 +15,38 @@ MyApp.PoeticApp = (function() {
     var Comments = Backbone.Collection.extend({
         model: Comment,
 
+        self: this,
+
         initialize: function(){},
 
-        getJSON : function(url, classToScrap, callback) {
+        fetch : function() {
             $.getJSON(
                 'http://query.yahooapis.com/v1/public/yql?callback=?',
                 {
-                    q: 'select * from html where url="'+url+'" and xpath="//*[@class=\''+classToScrap+'\']"',
+                    q: 'select * from html where url="www.redtube.com/mostviewed" and xpath="//*[@class=\'s\']"',
                     format: 'json'
                 },
                 function(data) {
-                    callback(data);
+                    var results = data.query.results.a;
+                    var length = results.length;
+
+                    for (var i=0; i<length; i++){
+                        //console.log('select * from html where url="'+videoUrl+'" and xpath="//*[@class=\'commentContent\']"');
+                        $.getJSON(
+                            {
+                                q: 'select * from html where url="www.redtube.com'+results[i].href+'" and xpath="//*[@class=\'commentContent\']"',
+                                format: 'json'
+                            },
+                            function() {
+                                console.log('success');
+                                console.log(data);
+                            }
+                        ).fail(function(){console.log('fail')})
+                    }
                 }
             )
         },
 
-        fetch : function(callback) {
-            var startUrl = 'http://www.redtube.com/mostviewed';
-
-            this.getJSON(startUrl, 's', function(data) {
-                callback(data.query.results);
-            });
-
-            console.log(results);
-
-        },
 
             /*
             function(){
