@@ -50,19 +50,13 @@ MyApp.PoeticApp = (function() {
                                 var length = results.length;
 
                                 for (var i=0; i<length; i++) {
-                                    var comment = new Comment({
-                                        CommentContent: results[i].span.content
-                                    });
+                                    var comment = results[i].span.content;
                                     fetchResults.push(comment);
                                 }
-
                             }
                         )
                     }
-
-
-                    callback(searchResults);
-
+                    callback(fetchResults);
                 }
             )
         },
@@ -74,9 +68,9 @@ MyApp.PoeticApp = (function() {
         PoeticApp.layout = new Layout();
 
         MyApp.PoeticApp.DefaultComment = PoeticApp.Comments.initialize();
-        MyApp.PoeticApp.Comment = PoeticApp.Comments.fetch(function(searchResults){
-            return searchResults;
-            //MyApp.vent.trigger("fetch:complete")
+        PoeticApp.Comments.fetch(function(fetchResults){
+            MyApp.PoeticApp.Comments = fetchResults;
+            MyApp.vent.trigger('fetch:complete');
         });
 
         PoeticApp.layout.on("show", function(){
@@ -85,7 +79,6 @@ MyApp.PoeticApp = (function() {
 
         MyApp.content.show(MyApp.PoeticApp.layout);
     };
-
 
     return PoeticApp;
 }());

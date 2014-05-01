@@ -18,6 +18,6 @@ MyApp.vent.on("layout:rendered", function(){
 });
 
 MyApp.vent.on("fetch:complete", function(){
-    MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
-    console.log('yay');
+    //MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
+    console.log(MyApp.PoeticApp.Comments);
 });
