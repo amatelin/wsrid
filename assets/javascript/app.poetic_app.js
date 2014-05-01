@@ -6,18 +6,27 @@ MyApp.PoeticApp = (function() {
 
         regions: {
             fetch: "#fetcherButton",
-            display: "#commentContainer"
+            comments: "#commentContainer"
         }
     });
 
-    var Comment = Backbone.Model.extend();
+    var Comment = Backbone.Model.extend({
+        defaults: {
+            CommentContent: "DEFAULT VALUE"
+        }
+    });
 
     var Comments = Backbone.Collection.extend({
         model: Comment,
 
         self: this,
 
-        initialize: function(){},
+        initialize: function(){
+            return new Comment({
+                CommentContent: 'GROS TEST'
+            });
+        },
+
 
         fetch : function() {
             $.getJSON(
@@ -52,36 +61,14 @@ MyApp.PoeticApp = (function() {
                 }
             )
         },
-
-
-            /*
-            function(){
-            $.getJSON(
-                'http://query.yahooapis.com/v1/public/yql?callback=?',
-                {
-                    q: 'select * from html where url="http://www.redtube.com/mostviewed" and xpath="//*[@class=\'s\']"',
-                    format: 'json'
-                },
-                function(data) {
-
-                    var results = data.query.results.a;
-                    var length = results.length;
-
-                    for(var i=0; i<length; i++) {
-                        console.log(results[i].href)
-                    }
-
-
-                }
-            );
-        }*/
-
     });
 
     PoeticApp.Comments = new Comments();
 
     PoeticApp.initializeLayout = function() {
         PoeticApp.layout = new Layout();
+
+        MyApp.PoeticApp.Comment = PoeticApp.Comments.initialize();
 
         PoeticApp.layout.on("show", function(){
            MyApp.vent.trigger("layout:rendered");
@@ -90,9 +77,6 @@ MyApp.PoeticApp = (function() {
         MyApp.content.show(MyApp.PoeticApp.layout);
     };
 
-    MyApp.addInitializer(function(){
-       PoeticApp.Comments.fetch();
-    });
 
     return PoeticApp;
 }());
