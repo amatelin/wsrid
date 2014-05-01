@@ -1,4 +1,4 @@
-wsrid
+Who said romance is dead ? (wsrid-project)
 =====
 
 Just a quick project to learn the basics of Marionette (and have fun in the meantime).
