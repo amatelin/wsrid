@@ -6,23 +6,28 @@ MyApp.PoeticApp = (function() {
 
         regions: {
             fetch: "#fetcherButton",
-            comments: "#commentContainer"
+            comment: "#commentContainer"
         }
     });
 
     var Comment = Backbone.Model.extend({
-        defaults: {
-            CommentContent: "DEFAULT VALUE"
-        }
-    });
-
-    var Comments = Backbone.Collection.extend({
         model: Comment,
 
-        self: this,
+        defaults: {
+            CommentContent: "DEFAULT VALUE"
+        },
 
         initialize: function(){
-            return new Comment({});
+            var self = this;
+            //_.bindAll(this, "fetch");
+            MyApp.vent.on("fetch", function(){
+                self.fetch(function(comment){
+                    MyApp.PoeticApp.Comment = comment;
+                    MyApp.vent.trigger('fetch:complete');
+
+                });
+                self.reset(comment);
+            });
         },
 
 
@@ -48,7 +53,6 @@ MyApp.PoeticApp = (function() {
                             var results = data.query.results.p;
                             var nbrComments = results.length;
                             var randomComment = Math.floor((Math.random()*nbrComments)+1);
-                            console.log(results[randomComment]);
                             toStore = results[randomComment].span.content;
                             comment = new Comment({
                                 CommentContent: toStore
@@ -62,18 +66,15 @@ MyApp.PoeticApp = (function() {
                 }
             )
         },
+
+
     });
 
-    PoeticApp.Comments = new Comments();
+
+    PoeticApp.Comment = new Comment();
 
     PoeticApp.initializeLayout = function() {
         PoeticApp.layout = new Layout();
-
-        MyApp.PoeticApp.DefaultComment = PoeticApp.Comments.initialize();
-        PoeticApp.Comments.fetch(function(comment){
-            MyApp.PoeticApp.Comment = comment;
-            MyApp.vent.trigger('fetch:complete');
-        });
 
         PoeticApp.layout.on("show", function(){
            MyApp.vent.trigger("layout:rendered");
