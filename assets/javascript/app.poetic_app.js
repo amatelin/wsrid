@@ -33,15 +33,21 @@ MyApp.PoeticApp = (function() {
                     for (var i=0; i<length; i++){
                         //console.log('select * from html where url="'+videoUrl+'" and xpath="//*[@class=\'commentContent\']"');
                         $.getJSON(
+                            'http://query.yahooapis.com/v1/public/yql?callback=?',
                             {
                                 q: 'select * from html where url="www.redtube.com'+results[i].href+'" and xpath="//*[@class=\'commentContent\']"',
                                 format: 'json'
                             },
-                            function() {
-                                console.log('success');
-                                console.log(data);
+                            function(data) {
+                                var results = data.query.results.p;
+                                var length = results.length;
+
+                                for (var i=0; i<length; i++) {
+                                    console.log(results[i].span.content)
+                                }
+
                             }
-                        ).fail(function(){console.log('fail')})
+                        )
                     }
                 }
             )
