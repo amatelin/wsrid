@@ -30,13 +30,12 @@ MyApp.PoeticApp = (function() {
             $.getJSON(
                 'http://query.yahooapis.com/v1/public/yql?callback=?',
                 {
-                    q: 'select * from html where url="www.redtube.com/mostviewed" and xpath="//*[@class=\'s\']"',
+                    q: 'select * from html where url="www.redtube.com/mostviewed?period=alltime" and xpath="//*[@class=\'s\']"',
                     format: 'json'
                 },
                 function(data) {
                     var results = data.query.results.a;
-                    var nbrVids = results.length;
-                    var randomVid = Math.floor((Math.random()*nbrVids)+1);
+                    var randomVid = Math.floor((Math.random()*30)+1);
                     var toStore = '';
 
                     $.getJSON(
@@ -51,7 +50,6 @@ MyApp.PoeticApp = (function() {
                             var randomComment = Math.floor((Math.random()*nbrComments)+1);
                             console.log(results[randomComment]);
                             toStore = results[randomComment].span.content;
-                            //console.log(toStore);
                             comment = new Comment({
                                 CommentContent: toStore
                             });
