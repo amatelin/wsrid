@@ -3,6 +3,7 @@ MyApp.PoeticApp.CommentList = (function() {
 
     var CommentView = Backbone.Marionette.ItemView.extend({
         template: "#comment-template",
+        model: "Comment"
     });
 
     CommentList.showComment = function(comment) {
@@ -18,6 +19,6 @@ MyApp.vent.on("layout:rendered", function(){
 });
 
 MyApp.vent.on("fetch:complete", function(){
-    //MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
-    console.log(MyApp.PoeticApp.Comments);
+    MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
+    //console.log(MyApp.PoeticApp.Comment);
 });

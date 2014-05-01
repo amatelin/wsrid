@@ -35,28 +35,32 @@ MyApp.PoeticApp = (function() {
                 },
                 function(data) {
                     var results = data.query.results.a;
-                    var length = results.length;
-                    var fetchResults = [];
+                    var nbrVids = results.length;
+                    var randomVid = Math.floor((Math.random()*nbrVids)+1);
+                    var toStore = '';
 
-                    for (var i=0; i<length; i++){
-                        $.getJSON(
-                            'http://query.yahooapis.com/v1/public/yql?callback=?',
-                            {
-                                q: 'select * from html where url="www.redtube.com'+results[i].href+'" and xpath="//*[@class=\'commentContent\']"',
-                                format: 'json'
-                            },
-                            function(data) {
-                                var results = data.query.results.p;
-                                var length = results.length;
+                    $.getJSON(
+                        'http://query.yahooapis.com/v1/public/yql?callback=?',
+                        {
+                            q: 'select * from html where url="www.redtube.com'+results[randomVid].href+'" and xpath="//*[@class=\'commentContent\']"',
+                            format: 'json'
+                        },
+                        function(data) {
+                            var results = data.query.results.p;
+                            var nbrComments = results.length;
+                            var randomComment = Math.floor((Math.random()*nbrComments)+1);
+                            console.log(results[randomComment]);
+                            toStore = results[randomComment].span.content;
+                            //console.log(toStore);
+                            comment = new Comment({
+                                CommentContent: toStore
+                            });
+                            callback(comment);
 
-                                for (var i=0; i<length; i++) {
-                                    var comment = results[i].span.content;
-                                    fetchResults.push(comment);
-                                }
-                            }
-                        )
-                    }
-                    callback(fetchResults);
+                        }
+                    )
+
+
                 }
             )
         },
@@ -68,8 +72,8 @@ MyApp.PoeticApp = (function() {
         PoeticApp.layout = new Layout();
 
         MyApp.PoeticApp.DefaultComment = PoeticApp.Comments.initialize();
-        PoeticApp.Comments.fetch(function(fetchResults){
-            MyApp.PoeticApp.Comments = fetchResults;
+        PoeticApp.Comments.fetch(function(comment){
+            MyApp.PoeticApp.Comment = comment;
             MyApp.vent.trigger('fetch:complete');
         });
 
