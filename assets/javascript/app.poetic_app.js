@@ -14,12 +14,12 @@ MyApp.PoeticApp = (function() {
         model: Comment,
 
         defaults: {
-            CommentContent: "DEFAULT VALUE"
+            CommentContent: "Click me to unravel the romantic wonders of the Interweb !!!"
         },
 
         initialize: function(){
             var self = this;
-            //_.bindAll(this, "fetch");
+            _.bindAll(this, "fetch");
             MyApp.vent.on("fetch", function(){
                 self.fetch(function(comment){
                     MyApp.PoeticApp.Comment = comment;

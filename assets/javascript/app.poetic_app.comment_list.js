@@ -40,7 +40,5 @@ MyApp.vent.on("layout:rendered", function(){
 
 
 MyApp.vent.on("fetch:complete", function(){
-    console.log('fetched')
     MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
-    //console.log(MyApp.PoeticApp.Comment);
 });
