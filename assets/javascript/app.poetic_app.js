@@ -14,7 +14,7 @@ MyApp.PoeticApp = (function() {
         model: Comment,
 
         defaults: {
-            CommentContent: "Click me to unravel the romantic wonders of the Interweb !!!"
+            CommentContent: "Click here to unravel the romantic wonders of the Interweb !!!"
         },
 
         initialize: function(){
