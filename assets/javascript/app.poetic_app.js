@@ -2,11 +2,13 @@ MyApp.PoeticApp = (function() {
     var PoeticApp = {};
 
     var Layout = Backbone.Marionette.Layout.extend({
-        template: "#commentDisplay-layout",
+        template: "#layout",
 
         regions: {
             fetch: "#fetcherButton",
-            comment: "#commentContainer"
+            comment: "#commentContainer",
+            header: "#header",
+            footer: "footer"
         }
     });
 
@@ -14,11 +16,16 @@ MyApp.PoeticApp = (function() {
         model: Comment,
 
         defaults: {
-            CommentContent: "Click here to unravel the romantic wonders of the Interweb !!!"
+            CommentContent: "Are you ready to discover the creativity and the beauty that the users of your favorites' porn sites have to offer ?"
+        },
+
+        reset: function() {
+            var self = this;
+            self.reset();
         },
 
         initialize: function(){
-            var self = this;
+        var self = this;
             _.bindAll(this, "fetch");
             MyApp.vent.on("fetch", function(){
                 self.fetch(function(comment){
@@ -26,16 +33,17 @@ MyApp.PoeticApp = (function() {
                     MyApp.vent.trigger('fetch:complete');
 
                 });
-                self.reset(comment);
+                self.reset();
             });
         },
 
 
         fetch : function(callback) {
+            var randomPage = Math.floor((Math.random()*10)+1);
             $.getJSON(
                 'http://query.yahooapis.com/v1/public/yql?callback=?',
                 {
-                    q: 'select * from html where url="www.redtube.com/mostviewed?period=alltime" and xpath="//*[@class=\'s\']"',
+                    q: 'select * from html where url="www.redtube.com/mostviewed?period=alltime&page='+randomPage+'" and xpath="//*[@class=\'s\']"',
                     format: 'json'
                 },
                 function(data) {
@@ -51,7 +59,7 @@ MyApp.PoeticApp = (function() {
                         },
                         function(data) {
                             var results = data.query.results.p;
-                            var nbrComments = results.length;
+                            var nbrComments = results.length - 1;
                             var randomComment = Math.floor((Math.random()*nbrComments)+1);
                             toStore = results[randomComment].span.content;
                             comment = new Comment({

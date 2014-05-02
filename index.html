@@ -12,16 +12,23 @@
     <div id="content"></div>
 
     <!-- templates -->
-    <script type="text/template" id="commentDisplay-layout">
-        <div>
-            <div id="commentContainer"></div>
+    <script type="text/template" id="layout">
+        <div class="layout">
+            <div id="header" class="home-menu pure-menu pure-menu-open pure-menu-horizontal">
+                <h1 class="pure-menu-heading">Who said romance is dead</h1>
+            </div>
+            <div class="mainContainer">
+                <div id="commentContainer"></div>
+                <p>
+                    <a href="#" id="fetcherButton" class="pure-button pure-button-primary">
+                        <i class="fa fa-heart-o"></i>
+                        Click here to unravel </br>the romantic wonders of the interweb
+                        <i class="fa fa-heart-o"></i>
+                    </a>
+                </p>
+            </div>
+            <a href="https://github.com/amatelin/wsrid"><span class="git-icon"></span></a>
         </div>
-        <div>
-            <button id="fetcherButton">
-                <i class="fa fa-heart-o"></i>
-            </button>
-        </div>
-
     </script>
 
     <script type="text/template" id="comment-template">

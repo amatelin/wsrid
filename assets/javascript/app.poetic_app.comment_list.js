@@ -19,10 +19,13 @@ MyApp.PoeticApp.CommentList = (function() {
         }
     });
 
+
     MyApp.vent.on("layout:rendered", function(){
         var shuffleView = new ShuffleView();
         MyApp.PoeticApp.layout.fetch.attachView(shuffleView);
     });
+
+
 
     CommentList.showComment = function(comment) {
         var commentView = new CommentView({model: comment});

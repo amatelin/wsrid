@@ -1,18 +1,46 @@
-#fetcherButton {
+.layout {
+    background-color: #FFD5DE;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
 
-    height: 270px;
-    width: 270px;
-    border-radius: 100%;
-    margin: 0;
-    padding: 0;
-    border: none;
+#header {
+    background-color: #FD6E8A;
+}
+
+#header h1 {
+    color: #f8f5ef;
+    padding: 2%;
+    font-size: 30px;
+}
+
+.mainContainer {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    text-transform: uppercase;
 
 }
 
-#fetcherButton i {
-    font-size: 130px;
-    color: hotpink;
-    background-color: pink;
-    border-radius: inherit;
-    padding: 47px;
+.pure-button-primary {
+    background-color: #FF3E64 !important ;
+}
+
+.git-icon {
+    background: url('https://lh6.googleusercontent.com/-3BKTe8YFlbA/AAAAAAAAAAI/AAAAAAAAAF8/8gbU5TTLyUw/photo.jpg?sz=48');
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    top: 94%;
+}
 }
