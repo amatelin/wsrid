@@ -5,7 +5,7 @@ MyApp.PoeticApp = (function() {
         template: "#layout",
 
         regions: {
-            fetch: "#fetcherButton",
+            fetch: "#button",
             comment: "#commentContainer",
             header: "#header",
             footer: "#footer"
@@ -19,11 +19,9 @@ MyApp.PoeticApp = (function() {
             CommentContent: "Are you ready to discover the creativity and the beauty that the users of your favorites' porn sites have to offer ?"
         },
 
-
         reset: function() {
-            MyApp.PoeticApp.Comment.reset();
-            //var self = this;
-            //self.reset();
+            var self = this;
+            self.close();
         },
 
         initialize: function(){
@@ -35,7 +33,7 @@ MyApp.PoeticApp = (function() {
                     MyApp.vent.trigger('fetch:complete');
 
                 });
-
+                self.reset();
             });
         },
 

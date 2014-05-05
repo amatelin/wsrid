@@ -6,9 +6,21 @@ MyApp.PoeticApp.CommentList = (function() {
         model: "Comment"
     });
 
-    var FetcherView = Backbone.View.extend({
-        template: "#fetcher-template",
-        el: "#fetcherButton",
+    var FetcherView = Backbone.Marionette.ItemView.extend({
+        template: "#first-button-template",
+
+        events: {
+            'click' : 'fetch'
+        },
+
+        fetch: function() {
+            MyApp.vent.trigger("fetch");
+
+        }
+    });
+
+    var NewFetcherView = Backbone.Marionette.ItemView.extend({
+       template: "#second-button-template",
 
         events: {
             'click' : 'fetch'
@@ -29,12 +41,12 @@ MyApp.PoeticApp.CommentList = (function() {
 
     CommentList.showFetcher = function() {
         var fetcherView = new FetcherView();
-        MyApp.PoeticApp.layout.fetch.attachView(fetcherView);
+        MyApp.PoeticApp.layout.fetch.show(fetcherView);
     }
 
     CommentList.closeFetcher = function() {
-        var fetcherView = new FetcherView();
-        MyApp.PoeticApp.layout.fetch.close(fetcherView);
+        var newFetcherView = new NewFetcherView();
+        MyApp.PoeticApp.layout.fetch.show(newFetcherView);
     }
 
 

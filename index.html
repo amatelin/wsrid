@@ -19,19 +19,23 @@
             </div>
             <div class="mainContainer">
                 <div id="commentContainer"></div>
-                <p>
-                    <a href="#" id="fetcherButton" class="pure-button pure-button-primary">
-                        <i class="fa fa-heart-o"></i>
-                        Click here to unravel </br>the romantic wonders of the interweb
-                        <i class="fa fa-heart-o"></i>
-                    </a>
-
-                </p>
+                <div id="button"></div>
             </div>
             <a href="https://github.com/amatelin/wsrid"><span class="git-icon"></span></a>
         </div>
     </script>
-
+    <script type="text/template" id="first-button-template">
+        <a href="#" id="firstFetcherButton" class="pure-button pure-button-primary">
+            <i class="fa fa-heart-o"></i>
+            Click here to unravel </br>the romantic wonders of the interweb
+            <i class="fa fa-heart-o"></i>
+        </a>
+    </script>
+    <script type="text/template" id="second-button-template">
+        <a href="#" id="secondFetcherButton" class="pure-button pure-button-primary">
+            More love <i class="fa fa-heart-o"></i>
+        </a>
+    </script>
 
     <script type="text/template" id="comment-template">
         <h1><%= CommentContent %></h1>
