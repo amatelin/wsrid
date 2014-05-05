@@ -6,7 +6,8 @@ MyApp.PoeticApp.CommentList = (function() {
         model: "Comment"
     });
 
-    var ShuffleView = Backbone.View.extend({
+    var FetcherView = Backbone.View.extend({
+        template: "#fetcher-template",
         el: "#fetcherButton",
 
         events: {
@@ -20,17 +21,21 @@ MyApp.PoeticApp.CommentList = (function() {
     });
 
 
-    MyApp.vent.on("layout:rendered", function(){
-        var shuffleView = new ShuffleView();
-        MyApp.PoeticApp.layout.fetch.attachView(shuffleView);
-    });
-
-
-
     CommentList.showComment = function(comment) {
         var commentView = new CommentView({model: comment});
         MyApp.PoeticApp.layout.comment.show(commentView);
+
     };
+
+    CommentList.showFetcher = function() {
+        var fetcherView = new FetcherView();
+        MyApp.PoeticApp.layout.fetch.attachView(fetcherView);
+    }
+
+    CommentList.closeFetcher = function() {
+        var fetcherView = new FetcherView();
+        MyApp.PoeticApp.layout.fetch.close(fetcherView);
+    }
 
 
 
@@ -39,9 +44,11 @@ MyApp.PoeticApp.CommentList = (function() {
 
 MyApp.vent.on("layout:rendered", function(){
     MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
+    MyApp.PoeticApp.CommentList.showFetcher();
 });
 
 
 MyApp.vent.on("fetch:complete", function(){
     MyApp.PoeticApp.CommentList.showComment(MyApp.PoeticApp.Comment);
+    MyApp.PoeticApp.CommentList.closeFetcher();
 });

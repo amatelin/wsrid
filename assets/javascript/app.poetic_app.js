@@ -8,7 +8,7 @@ MyApp.PoeticApp = (function() {
             fetch: "#fetcherButton",
             comment: "#commentContainer",
             header: "#header",
-            footer: "footer"
+            footer: "#footer"
         }
     });
 
@@ -19,21 +19,23 @@ MyApp.PoeticApp = (function() {
             CommentContent: "Are you ready to discover the creativity and the beauty that the users of your favorites' porn sites have to offer ?"
         },
 
+
         reset: function() {
-            var self = this;
-            self.reset();
+            MyApp.PoeticApp.Comment.reset();
+            //var self = this;
+            //self.reset();
         },
 
         initialize: function(){
         var self = this;
-            _.bindAll(this, "fetch");
+            //_.bindAll(this, "fetch");
             MyApp.vent.on("fetch", function(){
                 self.fetch(function(comment){
                     MyApp.PoeticApp.Comment = comment;
                     MyApp.vent.trigger('fetch:complete');
 
                 });
-                self.reset();
+
             });
         },
 
@@ -79,9 +81,9 @@ MyApp.PoeticApp = (function() {
     });
 
 
-    PoeticApp.Comment = new Comment();
 
     PoeticApp.initializeLayout = function() {
+        PoeticApp.Comment = new Comment();
         PoeticApp.layout = new Layout();
 
         PoeticApp.layout.on("show", function(){
@@ -89,6 +91,7 @@ MyApp.PoeticApp = (function() {
         });
 
         MyApp.content.show(MyApp.PoeticApp.layout);
+
     };
 
     return PoeticApp;
