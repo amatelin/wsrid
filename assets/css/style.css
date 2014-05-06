@@ -1,15 +1,28 @@
-.layout {
-    background-color: #FFD5DE;
+/*.layout {
+    background-color: #;
     height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
+}*/
+
+.mainContainer {
+    background: #FFD5DE;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 88%;
+    top: 0;
+    left: 0;
+    position: fixed !important;
+
 }
 
 #header {
     background-color: #FD6E8A;
+    position: absolute;
 }
 
 #header h1 {
@@ -18,7 +31,7 @@
     font-size: 30px;
 }
 
-.mainContainer {
+.centralContainer {
     width: 80%;
     height: 50%;
     margin: auto;
@@ -32,6 +45,20 @@
 
 }
 
+.infoContainer {
+    position: absolute;
+    top: 87%;
+    width: 100%;
+    min-height: 12%;
+    z-index: 2;
+    background: white;
+    text-align: center;
+}
+
+.infoContainer h2:first-child {
+    margin-top: 3%;
+}
+
 .pure-button-primary {
     background-color: #FF3E64 !important ;
 }
@@ -40,9 +67,9 @@
     background: url('https://lh6.googleusercontent.com/-3BKTe8YFlbA/AAAAAAAAAAI/AAAAAAAAAF8/8gbU5TTLyUw/photo.jpg?sz=48');
     height: 50px;
     width: 50px;
-    position: fixed;
-    z-index: 1;
-    top: 94%;
+    position: inherit;
+    z-index: inherit;
+    margin-left: 47.5%
 }
 
 #loader {
