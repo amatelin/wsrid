@@ -39,6 +39,7 @@ MyApp.PoeticApp = (function() {
 
 
         fetch : function(callback) {
+            MyApp.vent.trigger('fetch:start')
             var randomPage = Math.floor((Math.random()*10)+1);
             $.getJSON(
                 'http://query.yahooapis.com/v1/public/yql?callback=?',
