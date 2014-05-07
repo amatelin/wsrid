@@ -54,9 +54,11 @@
     text-align: center;
 }
 
-.infoContainer h2:first-child {
-    margin-top: 3%;
+.ribbon {
+    background: none repeat scroll 0% 0% #2D3E50;
+    color: #AAA;
 }
+
 
 .pure-button-primary {
     background-color: #FF3E64 !important ;
@@ -75,4 +77,12 @@
     height:40px;
     width: 40px;
     margin: 10px;
+}
+
+.with-padding {
+    padding: 2%;
+}
+
+.pure-g {
+    letter-spacing: inherit !important;
 }
