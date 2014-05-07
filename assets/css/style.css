@@ -86,3 +86,7 @@
 .pure-g {
     letter-spacing: inherit !important;
 }
+
+.align-left {
+    text-align : left;
+}
