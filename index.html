@@ -6,15 +6,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-50768204-1', 'whosaidromanceisdead.com');
-        ga('send', 'pageview');
-    </script>
 </head>
 <body>
 
@@ -60,7 +51,7 @@
                             <img src="assets/img/wordcloud.png" class="pure-u-11-24">
                             <div class="pure-u-11-24 with-padding">
                                 <h4>So what's that now ?</h4>
-                                <p>Well, I had some fun going through 25 000 comments on the very same website that provides
+                                <p>Well, I had some fun going through 25 000 comments (thank you <a href="https://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CC0QFjAA&url=http%3A%2F%2Fscrapy.org%2F&ei=fMFqU4mLJIS1yASlyIHYCQ&usg=AFQjCNEHa5Gofn6fSaKWxn2AFP-i_hbUSg&sig2=olU1-sh-sHH335v4S5Slqw">Scrapy</a>) on the very same website that provides
                                     you with these charming lines of poetic endeavours. So please consider this neat wordcloud on your left !
                                     It represents the 125 words with the most occurrences, and was done thanks to the
                                     <a href="https://github.com/atizo/PyTagCloud">PyTagCloud</a>
@@ -121,6 +112,14 @@
     </script>
 
     <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-50768204-1', 'whosaidromanceisdead.com');
+        ga('send', 'pageview');
+        
         var ctx1 = $("#grossChart").get(0).getContext("2d");
         var ctx2 = $("#sweetChart").get(0).getContext("2d");
 
