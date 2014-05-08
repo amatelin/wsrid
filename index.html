@@ -74,14 +74,14 @@
             </div>
         </div>
     </script>
-    <script type="text/template" id="first-button-template">
+    <script type="text/template" id="first-fetcher-template">
         <a href="#" id="firstFetcherButton" class="pure-button pure-button-primary">
             <i class="fa fa-heart-o"></i>
             Click here to unravel </br>the romantic wonders of the interweb
             <i class="fa fa-heart-o"></i>
         </a>
     </script>
-    <script type="text/template" id="second-button-template">
+    <script type="text/template" id="second-fetcher-template">
         <a href="#" id="secondFetcherButton" class="pure-button pure-button-primary">
             More love <i class="fa fa-heart-o"></i>
         </a>
@@ -105,7 +105,7 @@
     <!-- Application core (Order matters) -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
     <script type="text/javascript" src="assets/javascript/app.poetic_app.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.poetic_app.comment_list.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.poetic_app.manage_views.js"></script>
 
     <script type="text/javascript">
         MyApp.start();
@@ -119,7 +119,7 @@
 
         ga('create', 'UA-50768204-1', 'whosaidromanceisdead.com');
         ga('send', 'pageview');
-        
+
         var ctx1 = $("#grossChart").get(0).getContext("2d");
         var ctx2 = $("#sweetChart").get(0).getContext("2d");
 

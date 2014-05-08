@@ -13,30 +13,9 @@ MyApp.PoeticApp = (function() {
     });
 
     var Comment = Backbone.Model.extend({
-        model: Comment,
-
         defaults: {
             CommentContent: "Are you ready to discover the creativity and the beauty that the users of your favorites' porn sites have to offer ?"
         },
-
-        reset: function() {
-            var self = this;
-            self.close();
-        },
-
-        initialize: function(){
-        var self = this;
-            //_.bindAll(this, "fetch");
-            MyApp.vent.on("fetch", function(){
-                self.fetch(function(comment){
-                    MyApp.PoeticApp.Comment = comment;
-                    MyApp.vent.trigger('fetch:complete');
-
-                });
-                self.reset();
-            });
-        },
-
 
         fetch : function(callback) {
             MyApp.vent.trigger('fetch:start')
@@ -87,6 +66,13 @@ MyApp.PoeticApp = (function() {
 
         PoeticApp.layout.on("show", function(){
            MyApp.vent.trigger("layout:rendered");
+        });
+
+        MyApp.vent.on("fetch", function(){
+            PoeticApp.Comment.fetch(function(comment){
+                MyApp.PoeticApp.Comment = comment;
+                MyApp.vent.trigger('fetch:complete');
+            });
         });
 
         MyApp.content.show(MyApp.PoeticApp.layout);
