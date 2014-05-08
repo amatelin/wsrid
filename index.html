@@ -51,23 +51,26 @@
                             <img src="assets/img/wordcloud.png" class="pure-u-11-24">
                             <div class="pure-u-11-24 with-padding">
                                 <h4>So what's that now ?</h4>
-                                <p>Well, I had some fun going through 25 000 comments (thank you <a href="https://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CC0QFjAA&url=http%3A%2F%2Fscrapy.org%2F&ei=fMFqU4mLJIS1yASlyIHYCQ&usg=AFQjCNEHa5Gofn6fSaKWxn2AFP-i_hbUSg&sig2=olU1-sh-sHH335v4S5Slqw">Scrapy</a>) on the very same website that provides
+                                <p>Well, I had some fun going through 25 000 comments on the very same website that provides
                                     you with these charming lines of poetic endeavours. So please consider this neat wordcloud on your left !
-                                    It represents the 125 words with the most occurrences, and was done thanks to the
-                                    <a href="https://github.com/atizo/PyTagCloud">PyTagCloud</a>
-                                    Python module.
+                                    It represents the 125 words with the most occurrences.
                                 </p>
                             </div>
                         </div>
                         <div class="pure-u-1-1 with-padding align-left">
+                            <h4>Is romance and good taste winning the lexical fight ?</h4>
+                            <p>Well as you can see, not so much...</p>
                             <canvas id="grossChart" class="with-padding" width="500px" height="500px"></canvas>
                             <canvas id="sweetChart" class="with-padding" width="500px" height="500px"></canvas>
-                            <h4>Is romance and good taste winning the lexical fight ?</h4>
-                            <p>Well as you can see, not so much...</br>
-                                If you want to do your own plots about data that nobody cares about, check the
-                                <a href="http://www.chartjs.org/">Chart.js</a>
-                                library.
-                            </p>
+                            <div class="pure-u-11-24 with-padding">
+                                <h4>Links for the Geeks</h4>
+                                <p>This is what I used to get the data and produce the graphs</p>
+                                <div class="links">
+                                    <a href="https://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CC0QFjAA&url=http%3A%2F%2Fscrapy.org%2F&ei=fMFqU4mLJIS1yASlyIHYCQ&usg=AFQjCNEHa5Gofn6fSaKWxn2AFP-i_hbUSg&sig2=olU1-sh-sHH335v4S5Slqw">Scrapy</a>
+                                    <a href="https://github.com/atizo/PyTagCloud">PyTagCloud</a>
+                                    <a href="http://www.chartjs.org/">Chart.js</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,9 +150,6 @@
 
         var newGrossChart = new Chart(ctx1).Bar(grossData);
         var newSweetChart = new Chart(ctx2).Bar(sweetData);
-
-
-
     </script>
 </body>
 </html>

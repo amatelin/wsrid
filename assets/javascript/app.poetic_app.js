@@ -1,3 +1,12 @@
+/*
+    PoeticApp Controller Class :
+    Declares Layout() class and Comment() model
+
+    Comment Model :
+    Methods
+        - fetch(callback())
+*/
+
 MyApp.PoeticApp = (function() {
     var PoeticApp = {};
 
@@ -28,7 +37,7 @@ MyApp.PoeticApp = (function() {
                 },
                 function(data) {
                     var results = data.query.results.a;
-                    var randomVid = Math.floor((Math.random()*30)+1);
+                    var randomVid = Math.floor((Math.random()*30));
                     var toStore = '';
 
                     $.getJSON(
@@ -40,26 +49,32 @@ MyApp.PoeticApp = (function() {
                         function(data) {
                             var results = data.query.results.p;
                             var nbrComments = results.length - 1;
-                            var randomComment = Math.floor((Math.random()*nbrComments)+1);
+                            var randomComment = Math.floor((Math.random()*nbrComments));
                             toStore = results[randomComment].span.content;
                             comment = new Comment({
                                 CommentContent: toStore
                             });
                             callback(comment);
-
                         }
                     )
-
-
                 }
             )
         },
-
-
     });
 
+/*
+    Initialize controller's logic and management of events
+    Class
+        - Comment()
+        - Layout()
+    Events
+        - show
+        - fetch
+    Triggers
+        - layout:rendered
+        - fetch:complete
 
-
+ */
     PoeticApp.initializeLayout = function() {
         PoeticApp.Comment = new Comment();
         PoeticApp.layout = new Layout();

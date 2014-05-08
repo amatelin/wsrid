@@ -78,7 +78,7 @@ MyApp.PoeticApp.ManageViews = (function() {
 
 /*
     Event Management :
-    States
+    Events
         - layout:rendered
         - fetch:start
         - fetch:complete
