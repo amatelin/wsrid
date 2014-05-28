@@ -32,27 +32,40 @@ MyApp.PoeticApp = (function() {
             $.getJSON(
                 'http://query.yahooapis.com/v1/public/yql?callback=?',
                 {
-                    q: 'select * from html where url="www.redtube.com/mostviewed?period=alltime&page='+randomPage+'" and xpath="//*[@class=\'s\']"',
+                    q: 'select * from html where url="http://www.pornhub.com/video?o=mv&t=a&page='+randomPage+'" and xpath="//*[@class=\'title\']/a"',
                     format: 'json'
                 },
                 function(data) {
                     var results = data.query.results.a;
-                    var randomVid = Math.floor((Math.random()*30));
+                    var randomVid = Math.floor((Math.random()*23));
                     var toStore = '';
 
                     $.getJSON(
                         'http://query.yahooapis.com/v1/public/yql?callback=?',
                         {
-                            q: 'select * from html where url="www.redtube.com'+results[randomVid].href+'" and xpath="//*[@class=\'commentContent\']"',
+                            q: 'select * from html where url="http://www.pornhub.com'+results[randomVid].href+'" and xpath="//*[@class=\'commentMsg\']/div/p"',
                             format: 'json'
                         },
                         function(data) {
                             var results = data.query.results.p;
                             var nbrComments = results.length - 1;
                             var randomComment = Math.floor((Math.random()*nbrComments));
-                            toStore = results[randomComment].span.content;
+                            var toStore = "";
+                            var next = 0;
+
+
+                            while(toStore.length<50) {
+                                if (results[randomComment+next].content) {
+                                    toStore = results[randomComment+next].content;
+                                } else {
+                                    toStore = results[randomComment+next];
+                                }
+                                next+=1;
+                            }
+
+
                             comment = new Comment({
-                                CommentContent: toStore
+                                CommentContent: '"'+toStore+'"'
                             });
                             callback(comment);
                         }
